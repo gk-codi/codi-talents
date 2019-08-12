@@ -1,0 +1,7 @@
+{
+    "presets": [
+        "razzle/babel",
+        "@babel/preset-env"
+    ],
+    "plugins": []
+}
