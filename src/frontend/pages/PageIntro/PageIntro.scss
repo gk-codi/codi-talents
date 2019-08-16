@@ -1,0 +1,30 @@
+body{
+    background-image: url('https://cdn-images-1.medium.com/max/1920/1*vXjx4Y7EgQBwALkaeZJ0Cg.jpeg')
+}
+.intro {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0000008f;
+    padding: 19px 12%;
+}
+.button:hover {
+    background: #8ac1f8;
+}
+.button {
+    display: block;
+    background: #0020ff;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+}
+.button:focus, .button:hover {   
+    color: #c90056;
+    text-decoration: none;
+}

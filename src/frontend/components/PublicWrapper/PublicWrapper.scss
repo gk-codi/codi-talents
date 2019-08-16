@@ -1,0 +1,163 @@
+.app-public {
+  .filter {
+    background-color: #302e40;
+  }
+
+  .dropdown-toggle {
+    color: #ffffff;
+  }
+
+  .btn-primary {
+    background-color: #394cff;
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background-color: darkblue;
+  }
+
+  .btn-success {
+    background-color: #ff0b73;
+    border-color: #ff0b73;
+  }
+
+  .btn-success:hover {
+    background-color: #d40961;
+    border-color: #d40961;
+  }
+
+  .contact-info {
+    display: inline-flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .contact-info div {}
+
+  .thumbnail:hover {
+    /* border: 4px solid#ff0b73; */
+    background-color: #e8d8d8;
+  }
+
+  .thumbnail .caption {
+    height: 100%;
+    position: relative;
+  }
+
+  .student-info {
+    color: #302e40;
+    text-align: center;
+  }
+
+  .student {
+    background-color: #302e40;
+    padding-top: 30px;
+  }
+
+  .filterSelected {
+    color: #ff0b73;
+    background-color: white;
+    margin: 0;
+    padding: 17px;
+  }
+
+  .student-image {
+    border-bottom-color: #ff0b73;
+  }
+
+  .student-name {
+    text-align: center;
+  }
+
+  img {
+    display: block;
+    margin: auto;
+    border-radius: 100px;
+  }
+
+  .btn-danger {
+    color: beige;
+    /* border-color: #d43f3a; */
+    border-radius: 30px;
+    margin-left: 6px;
+    background-color: #ff0b73;
+  }
+
+  .thumbnail {
+    height: 575px;
+    border-bottom: 4px solid #ff0b73;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .student-info {
+    color: #302e40;
+  }
+
+  hr {
+    width: 100%;
+    position: absolute;
+    top: -10px;
+    margin-top: 0;
+  }
+
+  .btn-danger:hover {
+    color: #fff;
+    background-color: #ff0b73;
+  }
+
+  .student-name {
+    text-transform: capitalize;
+  }
+
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  h1 {
+    color: white;
+  }
+
+  .text-center {
+    background-color: white;
+    margin: 0;
+  }
+
+  .noResult {
+    height: 517px;
+  }
+
+  p {
+    text-transform: capitalize;
+  }
+
+  form input,
+  textarea {
+    max-width: 90%;
+  }
+
+  .btn-group-vertical.btn-block {
+    height: 313px;
+    overflow: auto;
+  }
+
+  @media (max-width: 1200px) {
+    .thumbnail {
+      min-height: 610px;
+    }
+  }
+
+  @media (max-width: 660px) {
+    .thumbnail {
+      height: 600px;
+    }
+  }
+
+}

@@ -1,15 +1,16 @@
 import React from 'react';
-import Route from 'react-router-dom/Route';
-import Switch from 'react-router-dom/Switch';
-import Home from './Home';
-import About from './About';
+import { Route, Switch } from 'react-router-dom';
+import PageIntro from './pages/PageIntro';
+import PageStudent from './pages/PageStudent';
 import './App.css';
 
 const App = () => (
-  <Switch>
-    <Route exact path='/' component={Home} />
-    <Route exact path='/about' component={About} />
-  </Switch>
+  <div>
+    <Switch>
+      <Route exact path="/Home" component={PageStudent} />
+      <Route exact path="/" component={PageIntro} />
+    </Switch>
+  </div>
 );
 
 export default App;
