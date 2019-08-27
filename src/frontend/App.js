@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import PageIntro from './pages/PageIntro';
 import PageStudent from './pages/PageStudent';
-import AdminApp from './admin/index';
+import AdminApp from './admin/App';
 import './App.css';
 
 const App = () => (
