@@ -48,7 +48,7 @@ import CardIcon from "../../components/Card/CardIcon.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
 import CardFooter from "../../components/Card/CardFooter.jsx";
 
-import { bugs, website, server } from "variables/general.jsx";
+import { bugs, website, server } from "../../variables/general.jsx";
 
 import {
   dailySalesChart,

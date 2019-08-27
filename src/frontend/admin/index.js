@@ -22,7 +22,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Admin from './layouts/Admin.jsx';
 import RTL from './layouts/RTL.jsx';
 
-import 'assets/css/material-dashboard-react.css?v=1.7.0';
+import './assets/css/material-dashboard-react.css?v=1.7.0';
 
 const AdminApp = () => {
   return (
