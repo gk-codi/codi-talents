@@ -26,11 +26,13 @@ import './assets/css/material-dashboard-react.css?v=1.7.0';
 
 const AdminApp = () => {
   return (
-    <Switch>
-      <Route path="/admin" component={Admin} />
-      <Route path="/rtl" component={RTL} />
-      <Redirect from="/" to="/admin/dashboard" />
-    </Switch>
+   <div>
+     he sad asd
+     <Switch>
+       <Route path="/dashboard" component={Admin} />
+       <Route path="/rtl" component={RTL} />
+     </Switch>
+   </div>
   );
 };
 

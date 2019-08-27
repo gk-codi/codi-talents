@@ -37,6 +37,8 @@ import Search from "@material-ui/icons/Search";
 import CustomInput from "../CustomInput/CustomInput.jsx";
 import Button from "../CustomButtons/Button.jsx";
 
+import { compareWindowProperty } from '../../../windowHelper'
+
 import rtlHeaderLinksStyle from "../../assets/jss/material-dashboard-react/components/rtlHeaderLinksStyle.jsx";
 
 class RTLNavbarLinks extends React.Component {
@@ -77,9 +79,9 @@ class RTLNavbarLinks extends React.Component {
           </Button>
         </div>
         <Button
-          color={window.innerWidth > 959 ? "transparent" : "white"}
-          justIcon={window.innerWidth > 959}
-          simple={!(window.innerWidth > 959)}
+          color={compareWindowProperty('innerWidth', '959', '>', true) ? "transparent" : "white"}
+          justIcon={compareWindowProperty('innerWidth', '959', '>', true)}
+          simple={!(compareWindowProperty('innerWidth', '959', '>', true))}
           aria-label="Dashboard"
           className={classes.buttonLink}
         >
@@ -93,9 +95,9 @@ class RTLNavbarLinks extends React.Component {
             buttonRef={node => {
               this.anchorEl = node;
             }}
-            color={window.innerWidth > 959 ? "transparent" : "white"}
-            justIcon={window.innerWidth > 959}
-            simple={!(window.innerWidth > 959)}
+            color={compareWindowProperty('innerWidth', '959', '>', true) ? "transparent" : "white"}
+            justIcon={compareWindowProperty('innerWidth', '959', '>', true)}
+            simple={!(compareWindowProperty('innerWidth', '959', '>', true))}
             aria-owns={open ? "menu-list-grow" : null}
             aria-haspopup="true"
             onClick={this.handleToggle}
@@ -170,9 +172,9 @@ class RTLNavbarLinks extends React.Component {
           </Poppers>
         </div>
         <Button
-          color={window.innerWidth > 959 ? "transparent" : "white"}
-          justIcon={window.innerWidth > 959}
-          simple={!(window.innerWidth > 959)}
+          color={compareWindowProperty('innerWidth', '959', '>', true) ? "transparent" : "white"}
+          justIcon={compareWindowProperty('innerWidth', '959', '>', true)}
+          simple={!(compareWindowProperty('innerWidth', '959', '>', true))}
           aria-label="Person"
           className={classes.buttonLink}
         >

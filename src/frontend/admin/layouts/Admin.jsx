@@ -23,6 +23,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
+import { compareWindowLocationProperty } from 'src/frontend/windowHelper'
 // core components
 import Navbar from '../components/Navbars/Navbar.jsx';
 import Footer from '../components/Footer/Footer.jsx';
@@ -82,7 +83,7 @@ class Dashboard extends React.Component {
     this.setState({ mobileOpen: !this.state.mobileOpen });
   };
   getRoute() {
-    return window.location.pathname !== '/admin/maps';
+    return compareWindowLocationProperty('pathname', '/admin/maps', '!=', true);
   }
   resizeFunction = () => {
     if (window.innerWidth >= 960) {

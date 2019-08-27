@@ -1,47 +1,48 @@
 /*!
-
-=========================================================
-* Material Dashboard React - v1.7.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
-import PropTypes from "prop-types";
-import { Switch, Route, Redirect } from "react-router-dom";
+ 
+ =========================================================
+ * Material Dashboard React - v1.7.0
+ =========================================================
+ 
+ * Product Page: https://www.creative-tim.com/product/material-dashboard-react
+ * Copyright 2019 Creative Tim (https://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
+ 
+ * Coded by Creative Tim
+ 
+ =========================================================
+ 
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ */
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Switch, Route, Redirect } from 'react-router-dom';
 // creates a beautiful scrollbar
-import PerfectScrollbar from "perfect-scrollbar";
-import "perfect-scrollbar/css/perfect-scrollbar.css";
+import PerfectScrollbar from 'perfect-scrollbar';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import withStyles from '@material-ui/core/styles/withStyles';
+import { compareWindowProperty, windowAddEventListener, compareWindowLocationProperty } from '../../windowHelper'
 // core components
-import Navbar from "../components/Navbars/Navbar.jsx";
-import Footer from "../components/Footer/Footer.jsx";
-import Sidebar from "../components/Sidebar/Sidebar.jsx";
-import FixedPlugin from "../components/FixedPlugin/FixedPlugin.jsx";
+import Navbar from '../components/Navbars/Navbar.jsx';
+import Footer from '../components/Footer/Footer.jsx';
+import Sidebar from '../components/Sidebar/Sidebar.jsx';
+import FixedPlugin from '../components/FixedPlugin/FixedPlugin.jsx';
 
-import routes from "../routes.js";
+import routes from '../routes.js';
 
-import rtlStyle from "../assets/jss/material-dashboard-react/layouts/rtlStyle.jsx";
+import rtlStyle from '../assets/jss/material-dashboard-react/layouts/rtlStyle.jsx';
 
-import image from "../assets/img/sidebar-2.jpg";
-import logo from "../assets/img/reactlogo.png";
+import image from '../assets/img/sidebar-2.jpg';
+import logo from '../assets/img/reactlogo.png';
 
 let ps;
 
 const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
-      if (prop.layout === "/rtl") {
+      if (prop.layout === '/rtl') {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -52,70 +53,78 @@ const switchRoutes = (
       }
       return null;
     })}
-    <Redirect from="/rtl" to="/rtl/rtl-page" />
+    <Redirect from="/rtl" to="/rtl/rtl-page"/>
   </Switch>
 );
 
 class RTL extends React.Component {
   state = {
     image: image,
-    color: "blue",
+    color: 'blue',
     hasImage: true,
-    fixedClasses: "dropdown ",
-    mobileOpen: false
+    fixedClasses: 'dropdown ',
+    mobileOpen: false,
   };
+  
   mainPanel = React.createRef();
+  
   handleImageClick = image => {
-    this.setState({ image: image });
+    this.setState({image: image});
   };
+  
   handleColorClick = color => {
-    this.setState({ color: color });
+    this.setState({color: color});
   };
+  
   handleFixedClick = () => {
-    if (this.state.fixedClasses === "dropdown") {
-      this.setState({ fixedClasses: "dropdown show" });
+    if (this.state.fixedClasses === 'dropdown') {
+      this.setState({fixedClasses: 'dropdown show'});
     } else {
-      this.setState({ fixedClasses: "dropdown" });
+      this.setState({fixedClasses: 'dropdown'});
     }
   };
+  
   handleDrawerToggle = () => {
-    this.setState({ mobileOpen: !this.state.mobileOpen });
+    this.setState({mobileOpen: !this.state.mobileOpen});
   };
+  
   getRoute() {
-    return window.location.pathname !== "/admin/maps";
+    return compareWindowLocationProperty('pathname', '/admin/maps', '!=', true)
   }
+  
   resizeFunction = () => {
-    if (window.innerWidth >= 960) {
-      this.setState({ mobileOpen: false });
+    if (compareWindowProperty('innerWidth', '960', '>=', true)) {
+      this.setState({mobileOpen: false});
     }
   };
+  
   componentDidMount() {
-    if (navigator.platform.indexOf("Win") > -1) {
+    if (navigator.platform.indexOf('Win') > -1) {
       ps = new PerfectScrollbar(this.mainPanel.current);
     }
-    window.addEventListener("resize", this.resizeFunction);
+    windowAddEventListener('resize', this.resizeFunction);
   }
   componentDidUpdate(e) {
     if (e.history.location.pathname !== e.location.pathname) {
       this.mainPanel.current.mainPanel.scrollTop = 0;
       if (this.state.mobileOpen) {
-        this.setState({ mobileOpen: false });
+        this.setState({mobileOpen: false});
       }
     }
   }
   componentWillUnmount() {
-    if (navigator.platform.indexOf("Win") > -1) {
+    if (navigator.platform.indexOf('Win') > -1) {
       ps.destroy();
     }
-    window.removeEventListener("resize", this.resizeFunction);
+    window.removeEventListener('resize', this.resizeFunction);
   }
   render() {
-    const { classes, ...rest } = this.props;
+    const {classes, ...rest} = this.props;
     return (
       <div className={classes.wrapper}>
         <Sidebar
           routes={routes}
-          logoText={"الإبداعية تيم"}
+          logoText={'الإبداعية تيم'}
           logo={logo}
           image={this.state.image}
           handleDrawerToggle={this.handleDrawerToggle}
@@ -139,12 +148,12 @@ class RTL extends React.Component {
           ) : (
             <div className={classes.map}>{switchRoutes}</div>
           )}
-          {this.getRoute() ? <Footer /> : null}
+          {this.getRoute() ? <Footer/> : null}
           <FixedPlugin
             handleImageClick={this.handleImageClick}
             handleColorClick={this.handleColorClick}
-            bgColor={this.state["color"]}
-            bgImage={this.state["image"]}
+            bgColor={this.state['color']}
+            bgImage={this.state['image']}
             handleFixedClick={this.handleFixedClick}
             fixedClasses={this.state.fixedClasses}
             rtlActive
@@ -156,7 +165,7 @@ class RTL extends React.Component {
 }
 
 RTL.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(rtlStyle)(RTL);

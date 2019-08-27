@@ -26,6 +26,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
+import { activeRouteHelper } from '../../../windowHelper'
 // core components
 import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
 import RTLNavbarLinks from "./RTLNavbarLinks.jsx";
@@ -37,7 +38,7 @@ function Header({ ...props }) {
   function makeBrand() {
     var name;
     props.routes.map(prop => {
-      if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
+      if(activeRouteHelper(prop.layout + prop.path, '!=', -1)){
         name = props.rtlActive ? prop.rtlName : prop.name;
       }
       return null;

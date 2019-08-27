@@ -1,20 +1,20 @@
 /*!
-
-=========================================================
-* Material Dashboard React - v1.7.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
+ 
+ =========================================================
+ * Material Dashboard React - v1.7.0
+ =========================================================
+ 
+ * Product Page: https://www.creative-tim.com/product/material-dashboard-react
+ * Copyright 2019 Creative Tim (https://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
+ 
+ * Coded by Creative Tim
+ 
+ =========================================================
+ 
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ */
 import React from 'react';
 // nodejs library to set properties for components
 import PropTypes from 'prop-types';
@@ -34,38 +34,46 @@ import Person from '@material-ui/icons/Person';
 import Notifications from '@material-ui/icons/Notifications';
 import Dashboard from '@material-ui/icons/Dashboard';
 import Search from '@material-ui/icons/Search';
+
 // core components
 import CustomInput from '../CustomInput/CustomInput.jsx';
 import Button from '../CustomButtons/Button.jsx';
+
+import { compareWindowProperty } from '../../../windowHelper'
 
 import headerLinksStyle from '../../assets/jss/material-dashboard-react/components/headerLinksStyle.jsx';
 
 class AdminNavbarLinks extends React.Component {
   state = {
-    openNotifcation: false,
+    openNotification: false,
     openProfile: false,
   };
+  
   handleToggleNotification = () => {
-    this.setState(state => ({ openNotifcation: !state.openNotifcation }));
+    this.setState(state => ({openNotification: !state.openNotification}));
   };
+  
   handleCloseNotification = event => {
     if (this.anchorNotification.contains(event.target)) {
       return;
     }
-    this.setState({ openNotifcation: false });
+    this.setState({openNotification: false});
   };
+  
   handleToggleProfile = () => {
-    this.setState(state => ({ openProfile: !state.openProfile }));
+    this.setState(state => ({openProfile: !state.openProfile}));
   };
+  
   handleCloseProfile = event => {
     if (this.anchorProfile.contains(event.target)) {
       return;
     }
-    this.setState({ openProfile: false });
+    this.setState({openProfile: false});
   };
+  
   render() {
-    const { classes } = this.props;
-    const { openNotifcation, openProfile } = this.state;
+    const {classes} = this.props;
+    const {openNotification, openProfile} = this.state;
     return (
       <div>
         <div className={classes.searchWrapper}>
@@ -81,17 +89,17 @@ class AdminNavbarLinks extends React.Component {
             }}
           />
           <Button color="white" aria-label="edit" justIcon round>
-            <Search />
+            <Search/>
           </Button>
         </div>
         <Button
-          color={window.innerWidth > 959 ? 'transparent' : 'white'}
-          justIcon={window.innerWidth > 959}
-          simple={!(window.innerWidth > 959)}
+          color={compareWindowProperty('innerWidth', '959', '>', true) ? 'transparent' : 'white'}
+          justIcon={compareWindowProperty('innerWidth', '959', '>', true)}
+          simple={!(compareWindowProperty('innerWidth', '959', '>', true))}
           aria-label="Dashboard"
           className={classes.buttonLink}
         >
-          <Dashboard className={classes.icons} />
+          <Dashboard className={classes.icons}/>
           <Hidden mdUp implementation="css">
             <p className={classes.linkText}>Dashboard</p>
           </Hidden>
@@ -101,15 +109,15 @@ class AdminNavbarLinks extends React.Component {
             buttonRef={node => {
               this.anchorNotification = node;
             }}
-            color={window.innerWidth > 959 ? 'transparent' : 'white'}
-            justIcon={window.innerWidth > 959}
-            simple={!(window.innerWidth > 959)}
-            aria-owns={openNotifcation ? 'notification-menu-list-grow' : null}
+            color={compareWindowProperty('innerWidth', '959', '>', true) ? 'transparent' : 'white'}
+            justIcon={compareWindowProperty('innerWidth', '959', '>', true)}
+            simple={!(compareWindowProperty('innerWidth', '959', '>', true))}
+            aria-owns={openNotification ? 'notification-menu-list-grow' : null}
             aria-haspopup="true"
             onClick={this.handleToggleNotification}
             className={classes.buttonLink}
           >
-            <Notifications className={classes.icons} />
+            <Notifications className={classes.icons}/>
             <span className={classes.notifications}>5</span>
             <Hidden mdUp implementation="css">
               <p onClick={this.handleClick} className={classes.linkText}>
@@ -118,17 +126,17 @@ class AdminNavbarLinks extends React.Component {
             </Hidden>
           </Button>
           <Poppers
-            open={openNotifcation}
+            open={openNotification}
             anchorEl={this.anchorNotification}
             transition
             disablePortal
             className={
-              classNames({ [classes.popperClose]: !openNotifcation }) +
+              classNames({[classes.popperClose]: !openNotification}) +
               ' ' +
               classes.popperNav
             }
           >
-            {({ TransitionProps, placement }) => (
+            {({TransitionProps, placement}) => (
               <Grow
                 {...TransitionProps}
                 id="notification-menu-list-grow"
@@ -156,7 +164,7 @@ class AdminNavbarLinks extends React.Component {
                         onClick={this.handleCloseNotification}
                         className={classes.dropdownItem}
                       >
-                        You{"'"}re now friend with Andrew
+                        You{'\''}re now friend with Andrew
                       </MenuItem>
                       <MenuItem
                         onClick={this.handleCloseNotification}
@@ -182,15 +190,15 @@ class AdminNavbarLinks extends React.Component {
             buttonRef={node => {
               this.anchorProfile = node;
             }}
-            color={window.innerWidth > 959 ? 'transparent' : 'white'}
-            justIcon={window.innerWidth > 959}
-            simple={!(window.innerWidth > 959)}
-            aria-owns={openNotifcation ? 'profile-menu-list-grow' : null}
+            color={compareWindowProperty('innerWidth', '959', '>', true) ? 'transparent' : 'white'}
+            justIcon={compareWindowProperty('innerWidth', '959', '>', true)}
+            simple={!(compareWindowProperty('innerWidth', '959', '>', true))}
+            aria-owns={openNotification ? 'profile-menu-list-grow' : null}
             aria-haspopup="true"
             onClick={this.handleToggleProfile}
             className={classes.buttonLink}
           >
-            <Person className={classes.icons} />
+            <Person className={classes.icons}/>
             <Hidden mdUp implementation="css">
               <p className={classes.linkText}>Profile</p>
             </Hidden>
@@ -201,12 +209,12 @@ class AdminNavbarLinks extends React.Component {
             transition
             disablePortal
             className={
-              classNames({ [classes.popperClose]: !openProfile }) +
+              classNames({[classes.popperClose]: !openProfile}) +
               ' ' +
               classes.popperNav
             }
           >
-            {({ TransitionProps, placement }) => (
+            {({TransitionProps, placement}) => (
               <Grow
                 {...TransitionProps}
                 id="profile-menu-list-grow"
@@ -230,7 +238,7 @@ class AdminNavbarLinks extends React.Component {
                       >
                         Settings
                       </MenuItem>
-                      <Divider light />
+                      <Divider light/>
                       <MenuItem
                         onClick={this.handleCloseProfile}
                         className={classes.dropdownItem}
